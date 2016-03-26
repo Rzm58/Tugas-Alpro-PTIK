@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <conio.h>
 
 	//Deklarasi Menu
-void biodata();
+char biodata();
 char pilihMenuUtama(), pilihMenuPerhitungan(), pilihMenuFisika(), pilihPerhitunganMtk();
 void garis(char kar, int jum);
 	//Deklarasi Matematika
