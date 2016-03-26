@@ -3,20 +3,92 @@
 #include <string.h>
 #include <math.h>
 
-int jumlah=5;
+	//Deklarasi Menu
 char pilihMenuUtama();
 void biodata();
+char pilihMenuPerhitungan();
+char pilihPerhitunganMtk();
 void garis(char kar, int jum);
+	//Deklarasi Matematika
+int luasperkbs(int), volumebalok(int,int,int), luasperblk(int,int,int);
+void kubus(int), balok(int,int,int);
+int rusuk, panjang, lebar, tinggi;
+	//Deklarasi Fisika
+int masa, jarijari, kec, fs, as;
+	//Deklarasi Statistika
+int jumlah=5;
 void statistika();
 void isidata(int n, char *nm_id[], int ni_id[]);
 void tampildata(char *nm_td[], int ni_td[],int n);
 
 int main(){
 	char pilih=0;
+	char response=0;
 	do{
 	pilih=pilihMenuUtama();
 	if(pilih=='1'){
 		biodata();
+	}else if(pilih=='2'){
+		system("cls");
+		garis('=',70);
+		printf("\t\t  Anda memasuki lembar perhitungan\n");
+		garis('=',70);
+			//>>tempat submenu perhitungan
+		//system("pause");
+		char pilih1='0';
+		do{
+			pilih=pilihMenuPerhitungan();
+			if(pilih=='1'){
+				system("cls");
+				garis('=',70);
+				printf("\t\t  Anda memasuki lembar perhitungan FISIKA\n");
+				garis('=',70);
+					//>> tempat submenu perhitungan fisika
+						
+							
+						
+				system("pause");
+			}else if(pilih=='2'){
+				system("cls");
+				char pilih='0';
+				do{
+					//>> tempat submenu perhitungan matematika
+					char response2='0';
+					pilih=pilihPerhitunganMtk();
+					if(pilih=='1'){
+						system("cls");
+						do{
+							garis('=',70);
+							printf("\t\tAnda memasuki lembar Perhitungan Kubus\n");
+							garis('=',70);
+							printf("Panjang rusuk (cm)\t: ");scanf("%d",&rusuk);
+							kubus(rusuk);
+							printf("Ulangi perhitungan? (Y/N): ");
+							response2 = getch();
+							system("cls");
+						}while((response2=='Y')||(response2=='y'));
+					}else if(pilih=='2'){
+						do{
+							system("cls");
+							garis('=',70);
+							printf("\t\tAnda memasuki lembar perhitungan balok\n");
+							garis('=',70);
+							printf("panjang balok (cm)\t: ");scanf("%d",&panjang);
+							printf("lebar balok (cm)\t: ");scanf("%d",&lebar);
+							printf("tinggi balok (cm)\t: ");scanf("%d",&tinggi);
+							balok(panjang, lebar, tinggi);
+							printf("Ulangi perhitungan? (Y/N): ");
+							response2 = getch();
+							system("cls");
+						}while((response2=='Y')||(response2=='y'));
+					}else if(pilih!='0'){//mengatasi jika salah pilih
+						system("cls");
+						printf("Maaf, Pilhan Anda salah\n");
+						system("pause");
+					}
+				}while(pilih!='0');
+			}
+		}while(pilih1!='0');
 	}else if(pilih=='3'){
 		statistika();
 	}
@@ -34,6 +106,9 @@ void garis(char kar, int jum){
 char pilihMenuUtama(){
 	char tpilih=0;
 	system("cls");
+	garis('=',70);
+	printf("\t      Selamat datang di Program perhitungan khusus\n");
+	garis('=',70);
 	printf("Pilihan menu \n");
 	printf("1. Menu 1 - BIODATA\n");
 	printf("2. Menu 2 - PERHITUNGAN\n");
@@ -45,18 +120,53 @@ char pilihMenuUtama(){
 
 void biodata(){
 	system("cls");
-			printf("Anda memasuki lembar biodata\n");
+			printf("\t\tAnda memasuki lembar biodata\n");
 			//>> tempat biodata
-			garis('=',32);
+			garis('=',70);
 			printf("Achmad Ahlar Ridha - 5235155571\n\n");
 			printf("Febrianto Widyoutomo - 5235152263\n\n");
 			printf("Ferdinand Louis\n\n");
 			printf("Riza Maulana Halim\n\n");
 			printf("Setya Achsanul Arief - 5235150721\n\n");
-			garis('=',32);
+			garis('=',70);
 			system("pause");
 }
 
+char pilihMenuPerhitungan(){// fungsi menampilkan menu dan mengembalikan pilihan user
+	char tpilih=0;
+	//system("cls");
+	printf("Pilihan menu Perhitugan\n");
+	printf("1. Menu 1 - FISIKA\n");
+	printf("2. Menu 2 - MATEMATIKA\n");
+	printf("3. Menu 3 - STATISTIKA\n");
+	printf("0. Exit \n");
+	printf("Pilihan Anda : ");scanf(" %c",&tpilih);
+	return tpilih;
+}
+
+char pilihPerhitunganMtk(){
+	char tpilih=0;
+	//system("cls");
+	garis('=',70);
+	printf("\t\tAnda memasuki lembar perhitungan MATEMATIKA\n");
+ 	garis('=',70);
+	printf("Pilihan menu \n");
+	printf("1. Menu 1 - KUBUS\n");
+	printf("2. Menu 2 - BALOK\n");
+	printf("0. Exit \n");
+	printf("Pilihan Anda : ");scanf(" %c",&tpilih);
+	return tpilih;
+}
+
+void kubus(int x){
+	printf("Luas permukaan kubus\t: %dcm^2\n",x*x*6);
+	printf("Volume kubus\t\t: %dcm^3\n",x*x*x);
+}
+
+void balok(int p, int l, int t){
+	printf("luas permukaan balok\t: %dcm^2\n",2*(p*l+p*t+l*t));
+	printf("volume balok\t\t: %dcm^3\n",p*l*t);
+}
 void statistika(){
 	system("cls");
 	int n;
