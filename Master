@@ -17,7 +17,7 @@ int rusuk, panjang, lebar, tinggi;
 int masa, jarijari, kec, fs, as;
 	//Deklarasi Statistika
 int jumlah=5;
-void statistika();
+char statistika();
 void isidata(int n, char *nm_id[], int ni_id[]);
 void tampildata(char *nm_td[], int ni_td[],int n);
 
@@ -25,73 +25,80 @@ int main(){
 	char pilih=0;
 	char response=0;
 	do{
-	pilih=pilihMenuUtama();
-	if(pilih=='1'){
-		biodata();
-	}else if(pilih=='2'){
-		system("cls");
-		garis('=',70);
-		printf("\t\t  Anda memasuki lembar perhitungan\n");
-		garis('=',70);
-			//>>tempat submenu perhitungan
-		//system("pause");
-		char pilih1='0';
-		do{
-			pilih=pilihMenuPerhitungan();
-			if(pilih=='1'){
-				system("cls");
-				garis('=',70);
-				printf("\t\t  Anda memasuki lembar perhitungan FISIKA\n");
-				garis('=',70);
-					//>> tempat submenu perhitungan fisika
-						
+		pilih=pilihMenuUtama();
+		if(pilih=='1'){
+			biodata();
+		}else if(pilih=='2'){
+			system("cls");
+			garis('=',70);
+			printf("\t\t  Anda memasuki lembar perhitungan\n");
+			garis('=',70);
+				//>>tempat submenu perhitungan
+			//system("pause");
+			char pilih1='0';
+			do{
+				pilih=pilihMenuPerhitungan();
+				if(pilih=='1'){
+					system("cls");
+					garis('=',70);
+					printf("\t\t  Anda memasuki lembar perhitungan FISIKA\n");
+					garis('=',70);
+						//>> tempat submenu perhitungan fisika
 							
-						
-				system("pause");
-			}else if(pilih=='2'){
-				system("cls");
-				char pilih='0';
-				do{
-					//>> tempat submenu perhitungan matematika
-					char response2='0';
-					pilih=pilihPerhitunganMtk();
-					if(pilih=='1'){
-						system("cls");
-						do{
-							garis('=',70);
-							printf("\t\tAnda memasuki lembar Perhitungan Kubus\n");
-							garis('=',70);
-							printf("Panjang rusuk (cm)\t: ");scanf("%d",&rusuk);
-							kubus(rusuk);
-							printf("Ulangi perhitungan? (Y/N): ");
-							response2 = getch();
+								
+							
+					system("pause");
+				}else if(pilih=='2'){
+					system("cls");
+					char pilih='0';
+					do{
+						//>> tempat submenu perhitungan matematika
+						char response2='0';
+						pilih=pilihPerhitunganMtk();
+						if(pilih=='1'){
 							system("cls");
-						}while((response2=='Y')||(response2=='y'));
-					}else if(pilih=='2'){
-						do{
+							do{
+								garis('=',70);
+								printf("\t\tAnda memasuki lembar Perhitungan Kubus\n");
+								garis('=',70);
+								printf("Panjang rusuk (cm)\t: ");scanf("%d",&rusuk);
+								kubus(rusuk);
+								printf("Ulangi perhitungan? (Y/N): ");
+								response2 = getch();
+								system("cls");
+							}while((response2=='Y')||(response2=='y'));
+						}else if(pilih=='2'){
+							do{
+								system("cls");
+								garis('=',70);
+								printf("\t\tAnda memasuki lembar perhitungan balok\n");
+								garis('=',70);
+								printf("panjang balok (cm)\t: ");scanf("%d",&panjang);
+								printf("lebar balok (cm)\t: ");scanf("%d",&lebar);
+								printf("tinggi balok (cm)\t: ");scanf("%d",&tinggi);
+								balok(panjang, lebar, tinggi);
+								printf("Ulangi perhitungan? (Y/N): ");
+								response2 = getch();
+								system("cls");
+							}while((response2=='Y')||(response2=='y'));
+						}else if(pilih!='0'){//mengatasi jika salah pilih
 							system("cls");
-							garis('=',70);
-							printf("\t\tAnda memasuki lembar perhitungan balok\n");
-							garis('=',70);
-							printf("panjang balok (cm)\t: ");scanf("%d",&panjang);
-							printf("lebar balok (cm)\t: ");scanf("%d",&lebar);
-							printf("tinggi balok (cm)\t: ");scanf("%d",&tinggi);
-							balok(panjang, lebar, tinggi);
-							printf("Ulangi perhitungan? (Y/N): ");
-							response2 = getch();
-							system("cls");
-						}while((response2=='Y')||(response2=='y'));
-					}else if(pilih!='0'){//mengatasi jika salah pilih
-						system("cls");
-						printf("Maaf, Pilhan Anda salah\n");
-						system("pause");
-					}
-				}while(pilih!='0');
+							printf("Maaf, Pilhan Anda salah\n");
+							system("pause");
+						}
+					}while(pilih!='0');
+				}
+			}while(pilih1!='0');
+		}else if(pilih=='3'){
+			int st=statistika();
+			if((st!='Y')||(st!='y')){
+				pilih=pilihMenuUtama();
 			}
-		}while(pilih1!='0');
-	}else if(pilih=='3'){
-		statistika();
-	}
+		}else if(pilih!='0'){//mengatasi jika salah pilih
+			system("cls");
+			printf("Maaf, Pilhan Anda salah\n");
+			system("pause");
+		}
 	}while(pilih!='0');
 }
 
@@ -148,7 +155,7 @@ char pilihPerhitunganMtk(){
 	char tpilih=0;
 	//system("cls");
 	garis('=',70);
-	printf("\t\tAnda memasuki lembar perhitungan MATEMATIKA\n");
+	printf("\t\t Anda memasuki lembar perhitungan MATEMATIKA\n");
  	garis('=',70);
 	printf("Pilihan menu \n");
 	printf("1. Menu 1 - KUBUS\n");
@@ -167,22 +174,34 @@ void balok(int p, int l, int t){
 	printf("luas permukaan balok\t: %dcm^2\n",2*(p*l+p*t+l*t));
 	printf("volume balok\t\t: %dcm^3\n",p*l*t);
 }
-void statistika(){
+char statistika(){
 	system("cls");
+	garis('=',70);
+	printf("\t\t   Silahkan isi data\n");
+ 	garis('=',70);
 	int n;
-	char c;
-	char *nm_st[jumlah];
+	int nm_st[jumlah][20];
 	int ni_st[jumlah];
+	char c;
 	do{
-		isidata(jumlah,nm_st,ni_st);
-		tampildata(nm_st,ni_st,jumlah);
+		int i;
+		for(i=1;i<=jumlah;i++){
+			printf("Nama ke - %d: ",i); scanf(" %s",&nm_st[i-1]);
+			printf("Nilai : ");scanf(" %d",&ni_st[i-1]);
+		}
+		printf("\n");
+		garis('=',32);
+		printf("%4s|%-21s|%5s","No.","Nama","Nilai\n");
+		garis('=',32);
+		for(i=0;i<jumlah;i++){
+			printf("%3d.| %-20s|%3d \n",i+1,nm_st[i],ni_st[i]);
+		}
+		garis('=',32);
 		printf("Masukan data baru?(Y/N): ");
 		c = getch();
 		system("cls");
 	}while((c=='Y')||(c=='y'));
-	if ((c!='N')||(c!='n')){
-		printf("Maaf, Pilihan Anda salah\n");
-	}
+	return c;
 }
 
 void isidata(int n, char *nm_id[], int *ni_id){
