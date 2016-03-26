@@ -13,12 +13,14 @@ void tampildata(char *nm_td[], int ni_td[],int n);
 
 int main(){
 	char pilih=0;
+	do{
 	pilih=pilihMenuUtama();
 	if(pilih=='1'){
 		biodata();
 	}else if(pilih=='3'){
 		statistika();
 	}
+	}while(pilih!='0');
 }
 
 void garis(char kar, int jum){
@@ -46,11 +48,11 @@ void biodata(){
 			printf("Anda memasuki lembar biodata\n");
 			//>> tempat biodata
 			garis('=',32);
-				printf("Achmad Ahlar Ridha - 5235155571\n\n");
-				printf("Febrianto Widyoutomo - 5235152263\n\n")
-				printf("Ferdinand Louis\n\n")
-				printf("Riza Maulana Halim\n\n")
-				printf("Setya Achsanul Arief - 5235150721\n\n")
+			printf("Achmad Ahlar Ridha - 5235155571\n\n");
+			printf("Febrianto Widyoutomo - 5235152263\n\n");
+			printf("Ferdinand Louis\n\n");
+			printf("Riza Maulana Halim\n\n");
+			printf("Setya Achsanul Arief - 5235150721\n\n");
 			garis('=',32);
 			system("pause");
 }
@@ -109,4 +111,4 @@ void tampildata(char *nm_td[], int *ni_td, int n){
 		printf("%3d.| %-20s|%3d \n",i+1,nm_td[i],ni_td[i]);
 	}
 	garis('=',32);
-	}
+}
