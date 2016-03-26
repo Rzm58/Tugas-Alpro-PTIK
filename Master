@@ -179,18 +179,19 @@ char pilihMenuUtama(){
 	return tpilih;
 }
 
-void biodata(){
+char biodata(){
 	system("cls");
-			printf("\t\tAnda memasuki laman biodata\n");
+	garis('=',70);
+	printf("\t\tAnda memasuki laman biodata\n");
 			//>> tempat biodata
-			garis('=',70);
-			printf("Achmad Ahlar Ridha - 5235155571\n\n");
-			printf("Febrianto Widyoutomo - 5235152263\n\n");
-			printf("Ferdinand Louis\n\n");
-			printf("Riza Maulana Halim\n\n");
-			printf("Setya Achsanul Arief - 5235150721\n\n");
-			garis('=',70);
-			system("pause");
+	garis('=',70);
+	printf("Achmad Ahlar Ridha - 5235155571\n\n");
+	printf("Febrianto Widyoutomo - 5235152263\n\n");
+	printf("Ferdinand Louis\n\n");
+	printf("Riza Maulana Halim\n\n");
+	printf("Setya Achsanul Arief - 5235150721\n\n");
+	garis('=',70);
+	system("pause");
 }
 
 char pilihMenuPerhitungan(){// fungsi menampilkan menu dan mengembalikan pilihan user
